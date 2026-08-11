@@ -31,7 +31,7 @@ print(customers.head())
 # Hint: create a 'revenue' column first (quantity * unit_price),
 # then group by 'product' and sum it.
 # revenue_by_product = ...
-
+sales.
 
 # TODO 1.2: Total quantity sold per region, sorted descending.
 # qty_by_region = ...
