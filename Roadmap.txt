@@ -1,0 +1,33 @@
+1
+Set up your Python dev environment
+Do this work on your Ubuntu boot — better matches deployment servers and Selenium/browser automation than Windows. Install pyenv + venv (or just venv if you're on one Python version), keep a dedicated virtualenv per project so package versions don't clash between your existing scraping work and new AI experiments.
+2
+Configure VS Code for Python + AI work
+Install the Python extension, Pylance, and Jupyter extension (great for testing embeddings/API calls interactively before scripting them). Add python-dotenv to your projects so API keys live in a gitignored .env file, never hardcoded.
+3
+Refresh your Python + data skills
+Quickly re-run through Pandas fundamentals (groupby, merge, pivot) and Selenium basics (waits, locators) since those are your bread-and-butter — a couple of small scraping/cleaning scripts will confirm you're not rusty. If Java's gone stale too, a few LeetCode-style exercises will surface any gaps fast.
+4
+Get your LLM API accounts set up
+Sign up for at least one of OpenAI, Anthropic, or Google Gemini (Gemini has a generous free tier, good for learning without spending). Store keys in .env, install the official Python SDK (openai / anthropic / google-generativeai), and send one test request end-to-end before doing anything else.
+5
+Learn embeddings and RAG fundamentals
+This is the core new skill. Work through a hands-on RAG course rather than a pure-theory one — Boot.dev's RAG course has you build the whole pipeline yourself in Python (indexing, embeddings, semantic search) which suits someone who already codes. DeepLearning.AI's free short courses (LangChain, LlamaIndex) are a good supplement once you have the basics down.
+6
+Build one small end-to-end RAG project
+Combine your existing scraping skill with the new AI skill: scrape or collect a small dataset (docs, articles, product listings), chunk it, embed it, store it in a vector DB (Chroma or FAISS run great locally on Ubuntu), and let an LLM answer questions over it. This single project becomes your portfolio proof for the new specialization.
+7
+Put it on GitHub and update your Upwork profile
+Push the project with a clear README. Then update your Upwork title/overview to reflect both skills together, e.g. 'Data Engineer & AI Automation | Python, Selenium, LLM Integration' — this is what actually gets you found for the new gig category while keeping your existing reviews and ranking.
+
+A few specifics worth calling out beyond the steps:
+
+**Resources by stage**
+- **RAG fundamentals (hands-on):** Boot.dev's RAG course guides you through constructing a complete RAG pipeline from scratch in Python, implementing everything yourself — inverted indexes, TF-IDF, embeddings, semantic search, hybrid retrieval. Good fit since you already code — it won't waste time on syntax basics.
+- **Free supplementary courses:** DeepLearning.AI, Google Cloud, Weights & Biases, and Duke University all offer free RAG courses covering agentic RAG with LlamaIndex, multimodal retrieval, and knowledge graphs.
+- **If you want a book instead of video courses:** *AI Engineering* by Chip Huyen and *The LLM Engineer's Handbook* by Paul Iusztin & Maxime Labonne are the two most consistently recommended right now.
+- **Zero-cost practice option:** You can build a working RAG system using LangChain with local embeddings, so you can test everything without paying for any API keys — useful before you start spending on OpenAI/Anthropic credits.
+
+**One dual-boot note:** do the actual dev work (venv, Selenium, vector DB) on Ubuntu — package management and any future Linux server deployment will match, and Selenium headless setups tend to be less fiddly there than on Windows. Keep Windows for anything client-communication-only (Upwork, email, etc.) if that's more comfortable.
+
+Want me to sketch the actual folder/project structure for that first RAG project, or write the `requirements.txt` / starter script to get you moving today?
