@@ -17,6 +17,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.support.ui import Select
 from webdriver_manager.chrome import ChromeDriverManager
 
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
@@ -34,24 +35,33 @@ driver.get("https://www.selenium.dev/selenium/web/web-form.html")
 # text_input = driver.find_element(By.NAME, "my-text")
 # text_input.send_keys("hello world")
 
+text_input = driver.find_element(By.NAME, "my-text")
+text_input.send_keys("hello  world")
+
 
 # TODO 1.2: Find the dropdown (By.NAME, "my-select") and select
 # the option with visible text "Two".
 # Hint: from selenium.webdriver.support.ui import Select
 # dropdown = ...
 # Select(dropdown).select_by_visible_text("Two")
-
+dropdown = driver.find_element(By.NAME, "my-select")
+Select(dropdown).select_by_visible_text("Two")
 
 # TODO 1.3: Find the checkbox by CSS selector (input[name='my-check'])
 # and click it.
 # checkbox = ...
-
+checkbox = driver.find_elements(By.CSS_SELECTOR, "input[name='my-check']")
+checkbox[0].click()
+checkbox[1].click()
 
 # TODO 1.4: Find the submit button by its CSS selector
 # (button[type='submit']) — don't click yet, just locate it and
 # print its visible text.
 # submit_btn = ...
 # print(submit_btn.text)
+
+submit_btn = driver.find_element(By.CSS_SELECTOR, "button[type='submit']")
+print(submit_btn.text)
 
 
 # ---------------------------------------------------------------
@@ -62,7 +72,7 @@ driver.get("https://www.selenium.dev/selenium/web/web-form.html")
 driver.get("https://the-internet.herokuapp.com/dynamic_loading/1")
 
 # TODO 2.1: Click the "Start" button (By.CSS_SELECTOR, "#start button")
-
+driver.find_element(By.CSS_SELECTOR,"#start button").click()
 
 # TODO 2.2: The text only appears after ~5 seconds and the element
 # is hidden until then. Use WebDriverWait + expected_conditions to
@@ -73,6 +83,9 @@ driver.get("https://the-internet.herokuapp.com/dynamic_loading/1")
 # )
 # print(finish_text.text)
 
+finish_text = wait.until(EC.visibility_of_element_located((By.ID, "finish")))
+print(finish_text.text)
+
 
 # ---------------------------------------------------------------
 # PART 3 — STRETCH: dynamic_loading/2 is trickier — the element
@@ -81,6 +94,12 @@ driver.get("https://the-internet.herokuapp.com/dynamic_loading/1")
 # condition and see what breaks if you reuse the same approach.
 # ---------------------------------------------------------------
 # driver.get("https://the-internet.herokuapp.com/dynamic_loading/2")
+
+driver.get("https://the-internet.herokuapp.com/dynamic_loading/2")
+driver.find_element(By.CSS_SELECTOR,"#start button").click()
+
+finish2_text = wait.until(EC.presence_of_element_located((By.ID, "finish")))
+print(finish2_text.text)
 
 
 driver.quit()
